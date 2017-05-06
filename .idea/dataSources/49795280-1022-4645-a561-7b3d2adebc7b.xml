@@ -20,27 +20,88 @@
     <schema id="12" parent="1" name="sys"/>
     <schema id="13" parent="1" name="top_songsDB"/>
     <schema id="14" parent="1" name="wishes_db"/>
-    <table id="15" parent="10" name="quotes"/>
-    <column id="16" parent="15" name="id">
+    <schema id="15" parent="1" name="parties_db">
+      <Visible>1</Visible>
+    </schema>
+    <table id="16" parent="10" name="quotes"/>
+    <table id="17" parent="15" name="clients"/>
+    <table id="18" parent="15" name="parties"/>
+    <column id="19" parent="16" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="17" parent="15" name="author">
+    <column id="20" parent="16" name="author">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="18" parent="15" name="quote">
+    <column id="21" parent="16" name="quote">
       <Position>3</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="19" parent="15" name="PRIMARY">
+    <key id="22" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="23" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="17" name="client_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="25" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="18" name="party_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="18" name="party_type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="18" name="party_cost">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="18" name="client_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="31" parent="18" name="client_id">
+      <ColNames>client_id</ColNames>
+    </index>
+    <key id="32" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="33" parent="18" name="parties_ibfk_1">
+      <ColNames>client_id</ColNames>
+      <RefSchemaName>parties_db</RefSchemaName>
+      <RefTableName>clients</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
